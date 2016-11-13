@@ -1,0 +1,16 @@
+version: 0.0
+os: linux
+files:
+  - source: muleapp/pingtest.zip
+    destination: /opt/mule-standalone-3.8.0/apps/
+hooks:
+  BeforeInstall:
+  AfterInstall:
+  ApplicationStart:
+    - location: scripts/start_server.sh
+      timeout: 300
+      runas: root
+  ApplicationStop:
+    - location: scripts/stop_server.sh
+      timeout: 300
+      runas: root
